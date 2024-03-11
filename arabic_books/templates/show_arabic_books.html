@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  {% for item in book %}
+    <div class="row m-2 d-flex justify-content-center">
+          <div class="card"  style="width: 18rem;">
+            <img src="../static/images/{{item.image}}" class="card-img-top img-thumbnail mt-2 ">
+            <hr />
+            <div class="card-body">
+              <h5 class="card-title text-center">{{item.itemsid.name}}</h5>
+              <p class="card-text"><strong>{{item.price}}</strong></p>
+              <a href="{%url 'add_to_cart' id=item.id %}" class="btn btn-primary">add to card</a> 
+              <a href="{% url 'details' id=item.id %}" class="btn btn-primary">prodect details</a> 
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

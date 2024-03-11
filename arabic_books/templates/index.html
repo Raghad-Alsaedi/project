@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <div class="row row-cols-md-3 g-3 mt-5 d-flex justify-content-center">
+
+            <a href="{% url 'show_arabic_books' %}">
+                <div class="card h-100">
+                      <img src="../static/images/book background1.jpg" class="card-img-top">
+                      <div class="card-body">
+                      <h5 class="card-title">الكتب العربية</h5>
+                      </div>
+                </div>
+            </a>
+
+            <a href="{%url 'show_english_books'%}">
+                <div class="col">
+                    <div class="card h-100">
+                      <img src="../static/images/book background.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">English Books</h5>
+                      </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</body>
+
+{% endblock %}

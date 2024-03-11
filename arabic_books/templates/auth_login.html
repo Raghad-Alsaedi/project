@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container ">
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="mt-5">
+                <form method="post" class="form-group">
+                    {% csrf_token %} 
+                         {{form.as_p}}
+                         <div class="pt-2">
+                           <strong>ليس لديك حساب<a href="{%url 'auth_register'%}">سجل اللان</a></strong>
+                         </div>
+                         <button class="btn btn-primary ةف-3" type="submit">Login</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

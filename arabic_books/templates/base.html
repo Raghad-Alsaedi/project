@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ {% load bootstrap5 %}
+ {% bootstrap_css %}
+ {% bootstrap_javascript %}
+    {% load static %}
+    <script src="../static/js/checkout.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script></script>
+    <title>E-commirce</title>
+
+    <style>
+        *{
+            font-family: cairo;
+        }
+        a{
+            color:black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+ <!-- Container wrapper -->
+ <div class="container-fluid">
+   <!-- Toggle button -->
+   
+
+   <!-- Collapsible wrapper -->
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <!-- Navbar brand -->
+    
+     <!-- Left links -->
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item p-2">
+        <a class="nav-link" href="#"><h5 class="text-white-50"><strong>Books.com</strong></h5></a>
+      </li>
+       <li class="nav-item p-2">
+         <a class="nav-link" href="{%url 'index'%}">Home</a>
+       </li>
+       <li class="nav-item p-2">
+         <a class="nav-link" href="{%url 'show_arabic_books' %}">Arabic Books</a>
+       </li>
+       <li class="nav-item p-2">
+         <a class="nav-link" href="{%url 'show_english_books' %}">English Books</a>
+       </li>
+     </ul>
+     <!-- Left links -->
+   </div>
+   <!-- Collapsible wrapper -->
+
+   <!-- Right elements -->
+   <div class="d-flex align-items-center">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item p-2">
+        <a class="nav-link" href="#"><h5 class="text-white-50"><strong><i class="fas fa-shopping-cart"></i></strong></h5></a>
+      </li>
+      {% if requset.user.is_authenticated %}
+      <li class="nav-item p-2">
+        <span class="text-white "> Welcome {{ user.username }}</span>
+      </li>
+      <li class="nav-item p-2">
+        <p >
+          <form action="{%  url 'auth_logout' %}" method="post">
+            <button class="btn btn-link btn-sm" style="text-decoration: none; color: aliceblue;">
+              <h6>logout</h6>
+            </button>
+          </form>
+        </p>
+      </li>
+      <li class="nav-item p-2">
+        <a
+        data-mdb-dropdown-init
+        class="dropdown-toggle d-flex align-items-center hidden-arrow"
+        href="#"
+        id="navbarDropdownMenuAvatar"
+        role="button"
+        aria-expanded="false"
+      >
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+          class="rounded-circle"
+          height="25"
+          alt="Black and White Portrait of a Man"
+          
+        />
+      </a>
+      <li class="nav-item p-2">
+        <i class="bi bi-bag text-white"></i>
+        <span class="badge rounded-pill badge-notification bg-danger">{{requset.session.countcart}}</span>
+      </li>
+      </li>
+      {% else %}
+      <li class="nav-item p-2">
+        <i class="bi bi-bag text-white"></i>
+        <span class="badge rounded-pill badge-notification bg-danger">{{requset.session.countcart}}</span>
+      </li>
+      <li class="nav-item p-2">
+        <p class="text-white"><a href="{% url 'auth_login' %}"><span class="text-white">Login</span></a></p> 
+      </li>
+      <li class="nav-item p-2">
+        <p class="text-white"><a href="{% url 'auth_register' %}"><span class="text-white">Register</span></a></p> 
+      </li>
+     </ul>
+     {% endif %}
+   </div>
+   
+
+ 
+   <!-- Right elements -->
+ </div>
+ <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+ </header>
+
+
+   <main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% block content %}
+                
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+   </main>
+
+   
+    <footer class="text-center bg-body-tertiary">
+        <!-- Grid container -->
+        <div class="container pt-4">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <!-- Github -->
+            <a
+              data-mdb-ripple-init
+              class="btn btn-link btn-floating btn-lg text-body m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2020 Copyright:
+          <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+   
+</body>
+</html>
